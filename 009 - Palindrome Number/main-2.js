@@ -5,7 +5,17 @@ function isPalindrome(number) {
         throw new Error(`Argument must be an integer.`);
     }
 
-    return String(number) === String(number).split("").reverse().join("");
+    const str = String(number);
+    const lastIndex = str.length - 1;
+    const halfIndex = Math.trunc(str.length / 2);
+
+    for (let i = 0; i < halfIndex; i++) {
+        if (str.charAt(i) !== str.charAt(lastIndex - i)) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 console.log(isPalindrome(121));
